@@ -21,8 +21,8 @@ class myOrderDitealsCell: UITableViewCell {
     
     func configureCell(orderDiteals: orderDiteslData){
         title.text = orderDiteals.productName
-        price.text = "Price \(orderDiteals.productPrice ?? "")"
-        qty.text = "Quantity \(orderDiteals.productQuantity ?? "")"
+        price.text = "Price \(orderDiteals.productPrice ?? 0)"
+        qty.text = "Quantity \(orderDiteals.productQuantity ?? 0)"
         let urlWithoutEncoding = ("\(URLs.mainImage)\(orderDiteals.image!)")
         let encodedLink = urlWithoutEncoding.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed)
         let encodedURL = NSURL(string: encodedLink!)! as URL

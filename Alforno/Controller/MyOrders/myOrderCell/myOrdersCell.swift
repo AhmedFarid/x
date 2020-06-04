@@ -18,11 +18,11 @@ class myOrdersCell: UITableViewCell {
     func configureCell(orders: orderData){
         stutes.layer.cornerRadius = 8
         orderId.text = "Order Id: \(orders.orderID ?? 0)"
-        price.text = "Order Total Price: \(orders.orderTotalPrice ?? "")"
+        price.text = "Order Total Price: \(orders.orderTotalPrice ?? 0)"
         date.text = "Order date: \(orders.createdAt ?? "")"
-        if orders.orderStat == "1" {
+        if orders.orderStat == 1 {
             stutes.text = "order dliverd"
-        }else if orders.orderStat == "2" {
+        }else if orders.orderStat == 2 {
             stutes.text = "order canceld"
         }else {
             stutes.text = "order in way"

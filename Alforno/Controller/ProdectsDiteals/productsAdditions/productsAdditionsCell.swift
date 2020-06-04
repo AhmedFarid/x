@@ -50,7 +50,7 @@ class productsAdditionsCell: UITableViewCell {
   
     func configureCell(offer: offfersData){
         title.text = offer.title
-        price.text = offer.priceGeneral	
+        price.text = "\(offer.priceGeneral ?? 0)"
         let urlWithoutEncoding = ("\(URLs.mainImage)\(offer.image!)")
         let encodedLink = urlWithoutEncoding.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed)
         let encodedURL = NSURL(string: encodedLink!)! as URL

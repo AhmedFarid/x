@@ -24,11 +24,11 @@ class myOrderDitealsVC: UIViewController, NVActivityIndicatorViewable {
     override func viewDidLoad() {
         super.viewDidLoad()
         myOrdersDitelsHandelRefresh()
-        paymentMethod.text = singlItem?.paymentMethod
+        paymentMethod.text = "\(singlItem?.paymentMethod ?? 0)"
         taxes.text = "\(singlItem?.tax ?? 0)"
-        shipping.text = singlItem?.deleveryFees
+        shipping.text = "\(singlItem?.deleveryFees ?? 0)"
         address.text = singlItem?.customerAddress
-        totoalPrice.text = singlItem?.orderTotalPrice
+        totoalPrice.text = "\(singlItem?.orderTotalPrice ?? 0)"
         orderDitealsTabelView.delegate = self
         orderDitealsTabelView.dataSource = self
         self.orderDitealsTabelView.register(UINib.init(nibName: "myOrderDitealsCell", bundle: nil), forCellReuseIdentifier: "cell")
@@ -85,7 +85,7 @@ extension myOrderDitealsVC: UITableViewDataSource, UITableViewDelegate {
             cell.addtion = {
                 let vc = additionsVC(nibName: "additionsVC", bundle: nil)
                 vc.singitemMyorders = self.orderDitels[indexPath.row]
-                vc.fromMyorders = true
+                vc.fromMyorders = false
                 vc.orderID = "\(self.singlItem?.orderID ?? 0)"
                 vc.modalPresentationStyle = .overCurrentContext
                 self.present(vc,animated: true)

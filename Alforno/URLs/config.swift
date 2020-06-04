@@ -11,8 +11,8 @@ import Foundation
 
 struct URLs {
     
-    static let main = "https://chic-chicken.co.il/api/"
-    static let mainImage = "https://chic-chicken.co.il"
+    static let main = "https://alforno.co.il/api/"
+    static let mainImage = "https://alforno.co.il"
     
     static let register = main + "register"
     static let login = main + "login"

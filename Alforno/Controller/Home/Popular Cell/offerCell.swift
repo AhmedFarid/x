@@ -38,8 +38,8 @@ class offerCell: UITableViewCell {
     
     func configureCell(offer: offfersData){
         title.text = offer.title
-        price.text = offer.salePrice
-        oldPrice.text = offer.priceGeneral
+        price.text = "\(offer.salePrice ?? 0)"
+        oldPrice.text = "\(offer.priceGeneral ?? 0)"
         offerDescripation.text = offer.shortDescription
         let urlWithoutEncoding = ("\(URLs.mainImage)\(offer.image!)")
         let encodedLink = urlWithoutEncoding.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed)

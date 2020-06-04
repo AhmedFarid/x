@@ -76,11 +76,12 @@ class homeVC: UIViewController, NVActivityIndicatorViewable {
                     self.offerTabelVIew.reloadData()
                     self.stopAnimating()
                 }else {
-                    
+                    self.stopAnimating()
                 }
             }else {
                self.stopAnimating()
             }
+            self.stopAnimating()
         }
     }
             

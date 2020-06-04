@@ -137,32 +137,54 @@ open class MOLH {
             UIButton.appearance().semanticContentAttribute = .forceRightToLeft
             UITextView.appearance().semanticContentAttribute = .forceRightToLeft
             UITextField.appearance().semanticContentAttribute = .forceRightToLeft
+            UINavigationBar.appearance().semanticContentAttribute = .forceRightToLeft
+            UITabBar.appearance().semanticContentAttribute = .forceRightToLeft
+            UISearchBar.appearance().semanticContentAttribute = .forceRightToLeft
+            UILabel.appearance().semanticContentAttribute = .forceRightToLeft
         } else {
             UIView.appearance().semanticContentAttribute = .forceLeftToRight
             UIButton.appearance().semanticContentAttribute = .forceLeftToRight
             UITextView.appearance().semanticContentAttribute = .forceLeftToRight
             UITextField.appearance().semanticContentAttribute = .forceLeftToRight
+            UINavigationBar.appearance().semanticContentAttribute = .forceLeftToRight
+            UITabBar.appearance().semanticContentAttribute = .forceLeftToRight
+            UISearchBar.appearance().semanticContentAttribute = .forceLeftToRight
+            UILabel.appearance().semanticContentAttribute = .forceLeftToRight
         }
     }
     
     /**
      reset app which will perform transition and call reset on appdelegate if it's MOLHResetable
      */
-    open class func reset() {
+    open class func reset(duration: Float = 0.5) {
         var transition = UIView.AnimationOptions.transitionFlipFromRight
         if !MOLHLanguage.isRTLLanguage() {
             transition = .transitionFlipFromLeft
         }
-       reset(transition: transition)
+        reset(transition: transition, duration: duration)
     }
     
-    open class func reset(transition: UIView.AnimationOptions) {
-        if let delegate = UIApplication.shared.delegate {
-            if delegate is MOLHResetable {
-                (delegate as!MOLHResetable).reset()
+    open class func reset(transition: UIView.AnimationOptions, duration: Float = 0.5) {
+        
+        func resetWhenNoScenesAvailable() {
+            if let delegate = UIApplication.shared.delegate {
+                if delegate is MOLHResetable {
+                    (delegate as!MOLHResetable).reset()
+                }
+                UIView.transition(with: ((delegate.window)!)!, duration: TimeInterval(duration), options: transition, animations: {})
             }
-            UIView.transition(with: ((delegate.window)!)!, duration: 0.5, options: transition, animations: {}) { (f) in
+        }
+        
+        if #available(iOS 13.0, *) {
+            if let window = UIApplication.shared.delegate?.window, window != nil {
+               resetWhenNoScenesAvailable()
+            } else {
+                for scene in UIApplication.shared.connectedScenes {
+                    (scene.delegate as? MOLHResetable)?.reset()
+                }
             }
+        } else {
+            resetWhenNoScenesAvailable()
         }
     }
 }
@@ -389,7 +411,7 @@ open class MOLHTextField: UITextField {
         super.init(coder: aDecoder)
         setupForLocalization()
     }
-
+    
     func setupForLocalization() {
         handleControlSwitching(forceSwitchingRegardlessOfTag: forceSwitchingRegardlessOfTag)
         handleSwitching(forceSwitchingRegardlessOfTag: forceSwitchingRegardlessOfTag)

@@ -36,6 +36,7 @@ class homeApi: NSObject {
                         completion(nil,true,images)
                     }
                 }catch{
+                    completion(nil,true,nil)
                     print("error")
                 }
             }
@@ -73,6 +74,7 @@ class homeApi: NSObject {
                     let offer = try JSONDecoder().decode(Offers.self, from: response.data!)
                         completion(nil,true,offer)
                 }catch{
+                    completion(nil,true,nil)
                     print("error")
                 }
             }

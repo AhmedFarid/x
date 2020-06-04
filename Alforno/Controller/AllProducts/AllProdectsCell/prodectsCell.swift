@@ -25,7 +25,7 @@ class prodectsCell: UICollectionViewCell {
     
     func configureCell(product: offfersData){
         title.text = product.title
-        price.text = product.salePrice
+        price.text = "\(product.salePrice ?? 0)"
         
         offerDescripation.text = product.shortDescription
         let urlWithoutEncoding = ("\(URLs.mainImage)\(product.image!)")

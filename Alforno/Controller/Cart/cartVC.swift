@@ -55,11 +55,11 @@ class cartVC: UIViewController, NVActivityIndicatorViewable{
                         if let liCart = liCart{
                             self.liCart = liCart.data?.list ?? []
                             print("zzzz\(liCart)")
-                            self.cartDataList.text = "\(self.liCart.count) Items / Total Cost \(liCart.data?.price ?? 0) \(self.liCart[0].currency ?? "$")"
-                            self.totlaPrice.text = "\(liCart.data?.price ?? 0) \(self.liCart[0].currency ?? "$")"
-                            self.totalTax.text = "\(liCart.data?.totalTax ?? 0) \(self.liCart[0].currency ?? "$")"
-                            self.totalDeleveryFees.text = "\(liCart.data?.totalDeleveryFees ?? "") \(self.liCart[0].currency ?? "$")"
-                            self.totalPrice = liCart.data?.price ?? 0
+                            self.cartDataList.text = "\(self.liCart.count) Items / Total Cost \(liCart.data?.price?.removeZerosFromEnd() ?? "") \(self.liCart[0].currency ?? "$")"
+                            self.totlaPrice.text = "\(liCart.data?.price?.removeZerosFromEnd() ?? "") \(self.liCart[0].currency ?? "$")"
+                            self.totalTax.text = "\(liCart.data?.totalTax?.removeZerosFromEnd() ?? "") \(self.liCart[0].currency ?? "$")"
+                            self.totalDeleveryFees.text = "\(liCart.data?.totalDeleveryFees ?? 0) \(self.liCart[0].currency ?? "$")"
+                            self.totalPrice = Int(liCart.data?.price ?? 0)
                             self.cartTabelView.reloadData()
                             self.stopAnimating()
                         }else {
@@ -140,7 +140,7 @@ extension cartVC: UITableViewDataSource, UITableViewDelegate {
         if let cell = cartTabelView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? cartCell {
             cell.configureCell(cart: liCart[indexPath.row])
             cell.selectionStyle = UITableViewCell.SelectionStyle.none
-            if self.liCart[indexPath.row].quantity == "1"{
+            if self.liCart[indexPath.row].quantity == 1{
                 cell.minBtn.isHidden = true
             }else {
                 cell.minBtn.isHidden = false
@@ -177,5 +177,16 @@ extension cartVC: UITableViewDataSource, UITableViewDelegate {
         }else {
             return cartCell()
         }
+    }
+}
+
+
+extension Double {
+    func removeZerosFromEnd() -> String {
+        let formatter = NumberFormatter()
+        let number = NSNumber(value: self)
+        formatter.minimumFractionDigits = 0
+        formatter.maximumFractionDigits = 16 //maximum digits in Double after dot (maximum precision)
+        return String(formatter.string(from: number) ?? "")
     }
 }

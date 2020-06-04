@@ -24,7 +24,7 @@ class productSizeCell: UICollectionViewCell {
     
     func configureCell(sizes: dataSize){
            sizeName.text = sizes.size
-           sizePrice.text = sizes.price
+           sizePrice.text = "\(sizes.price ?? 0)"
        }
 
 }

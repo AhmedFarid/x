@@ -135,8 +135,8 @@ class productDitealVC: UIViewController,NVActivityIndicatorViewable {
                 self.size = size.data ?? []
                 print(size)
                 self.sizeCollectionView.reloadData()
-                self.priceLabel.text = "\((Int(self.size[0].price ?? "0") ?? 1) * self.qty + self.additonals)"
-                self.price = Int(self.size[0].price ?? "0") ?? 0
+                self.priceLabel.text = "\((Int(self.size[0].price ?? 0)) * self.qty + self.additonals)"
+                self.price = Int(self.size[0].price ?? 0)
                 self.sizeCollectionView.selectItem(at: IndexPath(item: 0, section: 0), animated: false, scrollPosition: .centeredHorizontally)
                 //self..selectItem(at: 0, animated: true, scrollPosition: UICollectionViewScrollPosition(rawValue: 0))
                 self.stopAnimating()
@@ -209,7 +209,7 @@ extension productDitealVC: UICollectionViewDelegate, UICollectionViewDataSource,
         }
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.price = Int(size[indexPath.row].price ?? "0") ?? 0
+        self.price = Int(size[indexPath.row].price ?? 0)
         self.priceLabel.text = "\((price + additonals) * qty)"
         self.selectedSize = size[indexPath.row].id
     }
@@ -242,7 +242,7 @@ extension productDitealVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if !additonalId.contains(additonal[indexPath.row].id ?? 0){
             additonalId.append(additonal[indexPath.row].id ?? 0)
-            self.additonals += Int(self.additonal[indexPath.row].priceGeneral ?? "0") ?? 0
+            self.additonals += Int(self.additonal[indexPath.row].priceGeneral ?? 0)
             self.priceLabel.text = "\((self.price + self.additonals) * self.qty)"
         }
         print(additonalId)
@@ -254,7 +254,7 @@ extension productDitealVC: UITableViewDelegate, UITableViewDataSource {
         for id in additonalId{
             if id == additonal[indexPath.row].id {
                 additonalId.remove(at: currentIndex)
-                self.additonals -= Int(self.additonal[indexPath.row].priceGeneral ?? "0") ?? 0
+                self.additonals -= Int(self.additonal[indexPath.row].priceGeneral ?? 0)
                 self.priceLabel.text = "\((self.price + self.additonals) * self.qty)"
                 break
             }

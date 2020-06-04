@@ -15,14 +15,14 @@ struct oderList: Codable {
 }
 
 struct orderData: Codable {
-    let orderID: Int?
-    let orderTotalPrice: String?
-    let tax: Int?
-    let deleveryFees, orderStat, customerAddress, customerCity: String?
-    let customerCountry, customerStreet, customerCommentsExtra, langtude: String?
-    let lattude, paymentMethod, paymentStatus, customerPhone: String?
-    let createdAt: String?
-
+    let orderID, orderTotalPrice: Int?
+    let tax: Double?
+    let deleveryFees, orderStat: Int?
+    let customerAddress, customerCity, customerCountry, customerStreet: String?
+    let customerCommentsExtra: String?
+    let langtude, lattude, paymentMethod, paymentStatus: Int?
+    let customerPhone, createdAt: String?
+    
     enum CodingKeys: String, CodingKey {
         case orderID = "order_id"
         case orderTotalPrice = "order_total_price"
@@ -50,9 +50,10 @@ struct oderListDiteals: Codable {
 }
 
 struct orderDiteslData: Codable {
-    let productID, image, productName, productPrice: String?
-    let productQuantity, productTax: String?
-
+    let productID: Int?
+    let image, productName: String?
+    let productPrice, productQuantity, productTax: Int?
+    
     enum CodingKeys: String, CodingKey {
         case productID = "product_id"
         case image

@@ -15,9 +15,9 @@ struct Offers: Codable {
 }
 
 struct offfersData: Codable {
-    let id, wishlistState: Int?
-    let title, shortDescription, offerDescription, priceGeneral: String?
-    let salePrice, image: String?
+    let id, wishlistState,salePrice,priceGeneral: Int?
+    let title, shortDescription, offerDescription : String?
+    let image: String?
     
 
     enum CodingKeys: String, CodingKey {

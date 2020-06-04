@@ -6,6 +6,7 @@
 //  Copyright © 2020 E-bakers. All rights reserved.
 //
 
+
 import Foundation
 
 
@@ -15,11 +16,12 @@ struct carts: Codable {
     let error: String?
 }
 
+
 struct dataCart: Codable {
     let list: [listCart]?
-    let totalTax: Int?
-    let totalDeleveryFees: String?
-    let price: Int?
+    let totalTax: Double?
+    let totalDeleveryFees: Int?
+    let price: Double?
 
     enum CodingKeys: String, CodingKey {
         case list
@@ -29,12 +31,14 @@ struct dataCart: Codable {
     }
 }
 
+
 struct listCart: Codable {
-    let cartID: Int?
-    let productID, size, productName, shortDescription: String?
-    let listDescription, quantity, image, unitPrice: String?
-    let totalUnitPrice: Int?
-    let totalPriceWithAddtions, currency: String?
+    let cartID, productID: Int?
+    let size, productName, shortDescription, listDescription: String?
+    let quantity: Int?
+    let image: String?
+    let unitPrice, totalUnitPrice, totalPriceWithAddtions: Int?
+    let currency: String?
 
     enum CodingKeys: String, CodingKey {
         case cartID = "cart_id"
@@ -50,6 +54,4 @@ struct listCart: Codable {
         case currency
     }
 }
-
-
 

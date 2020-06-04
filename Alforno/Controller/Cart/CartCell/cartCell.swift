@@ -32,8 +32,8 @@ class cartCell: UITableViewCell {
     
     func configureCell(cart: listCart){
         title.text = cart.productName
-        price.text = "\(cart.totalPriceWithAddtions ?? "") \(cart.currency ?? "")"
-        qty.text = cart.quantity
+        price.text = "\(cart.totalPriceWithAddtions ?? 0) \(cart.currency ?? "")"
+        qty.text = "\(cart.quantity ?? 0)"
         let urlWithoutEncoding = ("\(URLs.mainImage)\(cart.image!)")
         let encodedLink = urlWithoutEncoding.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed)
         let encodedURL = NSURL(string: encodedLink!)! as URL

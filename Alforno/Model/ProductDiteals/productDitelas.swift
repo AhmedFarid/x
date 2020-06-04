@@ -16,8 +16,8 @@ struct ProductsSize: Codable {
 
 // MARK: - Datum
 struct dataSize: Codable {
-    let id: Int?
-    let size, price, salePrice: String?
+    let id, price, salePrice: Int?
+    let size: String?
 
     enum CodingKeys: String, CodingKey {
         case id, size, price

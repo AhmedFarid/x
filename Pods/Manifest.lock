@@ -1,14 +1,14 @@
 PODS:
-  - Alamofire (5.0.2)
+  - Alamofire (5.2.1)
   - IQKeyboardManagerSwift (6.5.5)
-  - Kingfisher (5.13.1):
-    - Kingfisher/Core (= 5.13.1)
-  - Kingfisher/Core (5.13.1)
-  - MOLH (1.1.2)
+  - Kingfisher (5.14.0):
+    - Kingfisher/Core (= 5.14.0)
+  - Kingfisher/Core (5.14.0)
+  - MOLH (1.4.1)
   - NVActivityIndicatorView (4.8.0):
     - NVActivityIndicatorView/Presenter (= 4.8.0)
   - NVActivityIndicatorView/Presenter (4.8.0)
-  - SideMenu (6.4.7)
+  - SideMenu (6.4.8)
   - SwiftyJSON (5.0.0)
 
 DEPENDENCIES:
@@ -31,14 +31,14 @@ SPEC REPOS:
     - SwiftyJSON
 
 SPEC CHECKSUMS:
-  Alamofire: 3ba7a4db18b4f62c4a1c0e1cb39d7f3d52e10ada
+  Alamofire: e911732990610fe89af59ac0077f923d72dc3dfd
   IQKeyboardManagerSwift: 0fb93310284665245591f50f7a5e38de615960b7
-  Kingfisher: f33a848445e33c543620812158dc5d47f6bf90df
-  MOLH: 79723d6938aff0ac02aebe4d89cc96b73f46fa32
+  Kingfisher: 7b64389a43139c903ec434788344c288217c792d
+  MOLH: 9ea6c0390f5963b2df9827ae64035fbc8598b092
   NVActivityIndicatorView: d24b7ebcf80af5dcd994adb650e2b6c93379270f
-  SideMenu: 928a015669c3afc201e1fe3a87f1b0bc8993a664
+  SideMenu: 4a891be552d30bb6fa87ad404d62e485f8450c34
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
 PODFILE CHECKSUM: 4ee1f8d3a4bd8b421f76cc84958dad4a547cd9e0
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.9.1

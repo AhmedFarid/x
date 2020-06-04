@@ -32,10 +32,12 @@ class additionsVC: UIViewController,NVActivityIndicatorViewable {
         addtionalTabelView.delegate = self
         addtionalTabelView.dataSource = self
         
-        if fromMyorders == false{
+        if fromMyorders == true{
+            print("zzz")
             cartHandelRefresh(URl: URLs.listDataCartAdditions, cart_id: "\(singleItem?.cartID ?? 0)", order_id: "", product_id: "")
         }else {
-            cartHandelRefresh(URl: URLs.orderAddtionsDetails, cart_id: "", order_id: orderID, product_id: singitemMyorders?.productID ?? "")
+            print("wwwz")
+            cartHandelRefresh(URl: URLs.orderAddtionsDetails, cart_id: "", order_id: orderID, product_id: "\(singitemMyorders?.productID ?? 0)")
         }
         
     }
